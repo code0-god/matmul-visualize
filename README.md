@@ -31,6 +31,32 @@ This is still in a rough state and under active development. If you want somethi
 
 3. Open `http://localhost:8000` in your browser. Draw on the 28×28 grid (left-click to draw, right-click to erase) and explore the 3D network with the mouse or trackpad.
 
+## Matmul visualisation demo
+
+The repository also includes an experimental GEMM timeline viewer powered by a small Rust CLI generator and a Three.js page under `public/matmul/`.
+
+1. Generate (or refresh) the sample timeline JSON:
+
+   ```bash
+   cargo run -p rust-tracer --release -- \
+     --out public/matmul/sample.json \
+     --schedule ikj \
+     --dims 128,128,128 \
+     --tile 16,16,16
+   ```
+
+   The defaults match the command above, so you can omit the flags unless you want to explore different loop orders or tile sizes.
+
+2. From the repository root, start any static server (the main quick-start server from above works fine):
+
+   ```bash
+   python3 -m http.server 8000
+   ```
+
+3. Open `http://localhost:8000/public/matmul/` (or click the **Matmul Demo** link in the main UI). Use the play/pause button and speed slider to scrub through the generated timeline while watching the A/B/C tile grids animate.
+
+For additional details see [`public/matmul/README.md`](public/matmul/README.md).
+
 ## Training & Exporting New Weights
 
 `training/mlp_train.py` trains a small MLP on MNIST and writes a JSON export the front-end consumes. Metal (MPS) is used automatically when available on Apple Silicon; otherwise the script falls back to CUDA or CPU.
