@@ -916,6 +916,24 @@ body > canvas {
   text-decoration: underline;
 }
 
+.matmul-demo-link {
+  position: fixed;
+  bottom: 24px;
+  right: 12px;
+  z-index: 24;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: rgba(214, 226, 255, 0.8);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: color 140ms ease;
+}
+
+.matmul-demo-link:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
 button {
   font-family: inherit;
 }

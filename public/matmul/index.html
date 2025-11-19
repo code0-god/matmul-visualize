@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Matmul Timeline Demo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <canvas id="scene"></canvas>
+      <div class="controls">
+        <h1>Matrix Multiply Timeline</h1>
+        <p>
+          Rust 생성기(<code>rust-tracer</code>)가 만든 타임라인을 바탕으로 A/B/C 타일의
+          연산을 시각화합니다.
+        </p>
+        <div class="control-row">
+          <button id="playPause" type="button">⏸ Pause</button>
+          <div class="step" id="stepIndicator">Step 0 / 0</div>
+        </div>
+        <label class="slider-label" for="speed">재생 속도</label>
+        <input id="speed" type="range" min="0.25" max="4" step="0.25" value="1" />
+        <div class="speed-value" id="speedValue">1.0x</div>
+        <div class="meta" id="metaInfo"></div>
+        <div class="status" id="status"></div>
+        <p class="hint">
+          <strong>힌트:</strong> 루트 디렉터리에서 <code>cargo run -p rust-tracer --release</code> 를 실행하면
+          <code>sample.json</code>이 갱신됩니다.
+        </p>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
